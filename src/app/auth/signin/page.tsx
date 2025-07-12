@@ -9,9 +9,6 @@ import { Label } from "@/components/ui/label";
 import {
   Card,
   CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
 } from "@/components/ui/card";
 import Link from "next/link";
 import { Eye, Loader2, Palette, Zap } from "lucide-react";
@@ -40,7 +37,7 @@ export default function SignIn() {
       } else {
         router.push("/chat");
       }
-    } catch (error) {
+    } catch {
       setError("An error occurred");
     } finally {
       setIsLoading(false);
@@ -122,7 +119,7 @@ export default function SignIn() {
 
               <div className="mt-6 text-center text-sm text-gray-600">
                 <p>
-                  Don't have an account?{" "}
+                  Don&apos;t have an account?{" "}
                   <Link
                     href="/auth/signup"
                     className="font-medium text-blue-600 hover:text-blue-500"

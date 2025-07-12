@@ -1,11 +1,11 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Trash2, Search, MessageSquare, Calendar, Loader2, ChevronLeft, ChevronRight } from "lucide-react";
 import { ProtectedRoute } from "@/components/ProtectedRoute";
 
@@ -62,14 +62,17 @@ export default function HistoryPage() {
     }
   };
 
+  // Memoize fetchMessages to prevent infinite re-renders
+  const memoizedFetchMessages = useCallback(fetchMessages, [session?.user]);
+
   useEffect(() => {
     if (session?.user) {
-      fetchMessages();
+      memoizedFetchMessages();
     }
-  }, [session]);
+  }, [session, memoizedFetchMessages]);
 
   const handleSearch = () => {
-    fetchMessages(1, searchTerm);
+    memoizedFetchMessages(1, searchTerm);
   };
 
   const handleDelete = async (messageId: number) => {

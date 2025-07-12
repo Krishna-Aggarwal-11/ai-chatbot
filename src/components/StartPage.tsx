@@ -1,4 +1,4 @@
-import { Code, Eye, Palette, Send, Zap } from "lucide-react";
+import { Code, Send } from "lucide-react";
 import { useEffect, useState } from "react";
 
 interface StartPageProps {

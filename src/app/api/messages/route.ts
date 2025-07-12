@@ -74,7 +74,7 @@ export async function DELETE(request: Request) {
     }
 
   
-    const result = await db
+    await db
       .delete(messages)
       .where(and(
         eq(messages.id, parseInt(messageId)),

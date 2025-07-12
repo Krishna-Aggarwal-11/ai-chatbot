@@ -1,6 +1,5 @@
 import { db } from "../../../../db/drizzle";
 import { messages } from "../../../../db/schema";
-import { auth } from "@/lib/auth";
 
 export async function GET() {
   try {

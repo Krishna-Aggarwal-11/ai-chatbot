@@ -1,7 +1,6 @@
 import { MessageSquare, Send, User, Bot } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import ReactMarkdown from "react-markdown";
-import remarkGfm from "remark-gfm";
 
 interface Message {
   id: number;
